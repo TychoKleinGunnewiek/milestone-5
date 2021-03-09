@@ -8,23 +8,27 @@
 # Date: 11-03-2020
 # 
 # Usage: ./milestone_5.sh FILE (in our case we use a txt file created from the wikipedia
-# page doing so like the following: go the the webpage U want to save
-# click right mouse button to choose the "save page as" option from the drop down menu.
-# now save the page as a .txt file to be able to use it in the shell.
+# page doing so like the following: 
+# - go the the webpage you want to save
+# - click right mouse button anywhere on the page to get a dropdown menu and choose the "save as" option.
+# - now save the page as a .txt file to be able to use it in the shell.
 #
 # this shell script is used in the linux shell.
 
-# the argument should be the file, check if we get it
+# this little code checks if the argument should is indeed a txt file.
 TEXT=$1
 if [ -z "$TEXT" ]
 then 
     echo "specify a file!"
     exit
 fi
-# output each match on its own line, 
-# indicating only the names of the files containing the specified string,
-# specifying word to search, specifying which file to search in, 
-# count the word occurences.
+
+# The next little bit of code will do the following:
+# - outputs each match on its own line (done by the -o option)
+# - make no distiction between the use of lower or upper case letters (done by the -i option)
+# - specify the word to be searched by the grep command (in this case the word "de" )
+# - specify which file to search in (in this case the saved wikipedia page as a .txt file)
+# - pipe this into wc -w which counts the occurences of the word de in the specified file (using the "|" character).
 grep -o -i de Rug_Wikipedia.txt | wc -w
 
 
